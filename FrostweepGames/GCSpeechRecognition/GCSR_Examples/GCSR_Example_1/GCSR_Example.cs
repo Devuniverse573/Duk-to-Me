@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -349,28 +349,30 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 			}		
 		}
 
-		private void RecognizeSuccessEventHandler(RecognitionResponse recognitionResponse)
-        {
-			//_resultText.text = "Recognize Success.";
-			InsertRecognitionResponseInfo(recognitionResponse);//!!RESULT CODE!!
-        }
-
 		// private void RecognizeSuccessEventHandler(RecognitionResponse recognitionResponse)
-		// {
-		// 	string transcript = recognitionResponse.transcription;
-		// 	string scriptToMatch = "Good afternoon, sir. How are you today?";
+        // {
+		// 	//_resultText.text = "Recognize Success.";
+		// 	InsertRecognitionResponseInfo(recognitionResponse);//!!RESULT CODE!!
+        // }
 
-		// 	if (transcript.Equals(scriptToMatch, System.StringComparison.OrdinalIgnoreCase))
-		// 	{
-		// 		Debug.Log("Script matched!");
-		// 		// Perform actions when the script matches
-		// 	}
-		// 	else
-		// 	{
-		// 		Debug.Log("Try again!");
-		// 		// Perform actions when the script does not match
-		// 	}
-		// }
+		private void RecognizeSuccessEventHandler(RecognitionResponse recognitionResponse)
+		{
+			string transcript = recognitionResponse.ToString();
+			string scriptToMatch = "Good afternoon sir. How are you today?";
+			
+			if (transcript.Equals(scriptToMatch, System.StringComparison.OrdinalIgnoreCase))
+			{
+				Debug.Log("Script matched!");
+				// Perform actions when the script matches
+				InsertRecognitionResponseInfo(recognitionResponse);//!!RESULT CODE!!
+			}
+			else
+			{
+				Debug.Log("Try again!");
+				// Perform actions when the script does not match
+				InsertRecognitionResponseInfo(recognitionResponse);
+			}
+		}
 
 
         private void LongRunningRecognizeSuccessEventHandler(Operation operation)
