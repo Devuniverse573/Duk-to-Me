@@ -9,11 +9,19 @@ client = texttospeech.TextToSpeechClient(credentials=credentials)
 # Set the text input to be synthesized
 synthesis_input = texttospeech.SynthesisInput(text="You're welcome. Have a safe and pleasant flight!")
 
-# Build the voice request, select the language code ("en-US") and the ssml
-# voice gender ("male")
+# Build the voice request, selecting the desired voice
 voice = texttospeech.VoiceSelectionParams(
-    language_code="en-US", ssml_gender=texttospeech.SsmlVoiceGender.MALE
+    language_code="en-GB", name="en-GB-Standard-F"
 )
+
+#FEMALE 1 - 차분한 목소리
+# name = "en-GB-Standard-C"
+#FEMALE 2 - 활기찬 목소리
+# name = "en-GB-Standard-F"
+#MALE 1 - 서비스직 목소리
+# name = "en-GB-Standard-B"
+#MALE 2 - 낮고 우울한 목소리
+# name = "en-GB-Standard-D"
 
 # Select the type of audio file you want returned
 audio_config = texttospeech.AudioConfig(
@@ -27,7 +35,7 @@ response = client.synthesize_speech(
 )
 
 # The response's audio_content is binary.
-with open("output.mp3", "wb") as out:
+with open("FEMALE2.mp3", "wb") as out:
     # Write the response to the output file.
     out.write(response.audio_content)
     print('Audio content written to file "output.mp3"')
