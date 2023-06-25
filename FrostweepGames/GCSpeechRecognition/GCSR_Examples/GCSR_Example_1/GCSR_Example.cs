@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 {
@@ -355,24 +356,56 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 		// 	InsertRecognitionResponseInfo(recognitionResponse);//!!RESULT CODE!!
         // }
 
-		private void RecognizeSuccessEventHandler(RecognitionResponse recognitionResponse)
-        {
-            string transcript = recognitionResponse.results[0].alternatives[0].transcript;
-            string scriptToMatch = "Hi, I'm good.";
+		// private void RecognizeSuccessEventHandler(RecognitionResponse recognitionResponse)
+        // {
+        //     string transcript = recognitionResponse.results[0].alternatives[0].transcript;
+        //     string scriptToMatch = "Hi, I'm good.";
             
-            if (transcript.Trim().Equals(scriptToMatch.Trim(), System.StringComparison.OrdinalIgnoreCase))
-            {
-                Debug.Log("It matches!");
-                // Perform actions when the script matches
-                InsertRecognitionResponseInfo(recognitionResponse);//!!RESULT CODE!!
-            }
-            else
-            {
-                Debug.Log("Try again!");
-                // Perform actions when the script does not match
-                InsertRecognitionResponseInfo(recognitionResponse);
-            }
-        }
+        //     if (transcript.Trim().Equals(scriptToMatch.Trim(), System.StringComparison.OrdinalIgnoreCase))
+        //     {
+        //         Debug.Log("It matches!");
+        //         // Perform actions when the script matches
+        //         InsertRecognitionResponseInfo(recognitionResponse);//!!RESULT CODE!!
+        //     }
+        //     else
+        //     {
+        //         Debug.Log("Try again!");
+        //         // Perform actions when the script does not match
+        //         InsertRecognitionResponseInfo(recognitionResponse);
+        //     }
+        // }
+
+		private void RecognizeSuccessEventHandler(RecognitionResponse recognitionResponse)
+		{
+			string transcript = recognitionResponse.results[0].alternatives[0].transcript;
+			string scriptPath = "Script.txt";
+
+		
+			string[] scriptLines = File.ReadAllLines(scriptPath);
+
+			bool matchFound = false;
+
+			foreach (string scriptLine in scriptLines)
+			{
+				if (transcript.Trim().Equals(scriptLine.Trim(), StringComparison.OrdinalIgnoreCase))
+				{
+					matchFound = true;
+					Debug.Log("Success!");
+					// Perform actions when a script line matches
+					InsertRecognitionResponseInfo(recognitionResponse);
+					break; // Exit the loop if a match is found
+				}
+			}
+
+			if (!matchFound)
+			{
+				Debug.Log("Try again!");
+				// Perform actions when no script line matches
+				InsertRecognitionResponseInfo(recognitionResponse);
+			}
+		}
+
+
 
 
         private void LongRunningRecognizeSuccessEventHandler(Operation operation)
