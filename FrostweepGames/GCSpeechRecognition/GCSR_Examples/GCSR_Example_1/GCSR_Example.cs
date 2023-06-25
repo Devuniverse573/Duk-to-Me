@@ -356,23 +356,23 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
         // }
 
 		private void RecognizeSuccessEventHandler(RecognitionResponse recognitionResponse)
-		{
-			string transcript = recognitionResponse.ToString();
-			string scriptToMatch = "Good afternoon sir. How are you today?";
-			
-			if (transcript.Equals(scriptToMatch, System.StringComparison.OrdinalIgnoreCase))
-			{
-				Debug.Log("Script matched!");
-				// Perform actions when the script matches
-				InsertRecognitionResponseInfo(recognitionResponse);//!!RESULT CODE!!
-			}
-			else
-			{
-				Debug.Log("Try again!");
-				// Perform actions when the script does not match
-				InsertRecognitionResponseInfo(recognitionResponse);
-			}
-		}
+        {
+            string transcript = recognitionResponse.results[0].alternatives[0].transcript;
+            string scriptToMatch = "Hi, I'm good.";
+            
+            if (transcript.Trim().Equals(scriptToMatch.Trim(), System.StringComparison.OrdinalIgnoreCase))
+            {
+                Debug.Log("It matches!");
+                // Perform actions when the script matches
+                InsertRecognitionResponseInfo(recognitionResponse);//!!RESULT CODE!!
+            }
+            else
+            {
+                Debug.Log("Try again!");
+                // Perform actions when the script does not match
+                InsertRecognitionResponseInfo(recognitionResponse);
+            }
+        }
 
 
         private void LongRunningRecognizeSuccessEventHandler(Operation operation)
