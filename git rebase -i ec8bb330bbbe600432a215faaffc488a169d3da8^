@@ -1,0 +1,136 @@
+[33mcommit ec8bb330bbbe600432a215faaffc488a169d3da8[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: wooju <wuniverse8897@gmail.com>
+Date:   Tue Jun 27 17:19:56 2023 +0900
+
+    점수체계 완료
+
+[33mcommit 51fd1fdf5eaa0fddb06bd7d560c221e70011d035[m
+Author: wooju <wuniverse8897@gmail.com>
+Date:   Sun Jun 25 18:50:28 2023 +0900
+
+    Script.txt파일과 인식한 음성 대조 성공
+
+[33mcommit fb64bc08c8592e06ee072accf73d110b2157229d[m
+Author: wooju <wuniverse8897@gmail.com>
+Date:   Sun Jun 25 16:11:50 2023 +0900
+
+    Try Again! 오류 잡기
+
+[33mcommit 726ebba7aa1ed93250646cf8a937fe09d5c757a9[m
+Merge: 2ca8a21 c35f034
+Author: wooju <wuniverse8897@gmail.com>
+Date:   Sun Jun 25 15:00:48 2023 +0900
+
+    Google Text-to-Speech 목소리 성별변경 가능
+
+[33mcommit c35f034bc5921d4391839368b5cb28a0a5210e9d[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: wooju <wuniverse8897@gmail.com>
+Date:   Sun Jun 25 14:37:32 2023 +0900
+
+    Google Text-to-Speech 성별변경 가능
+
+[33mcommit 2ca8a213455874d4663dd41c7e42211da9884273[m
+Author: Woo Ju <89486649+Devuniverse573@users.noreply.github.com>
+Date:   Tue Jun 20 09:31:25 2023 +0900
+
+    Google Speech API Python Script 성공 Code
+
+[33mcommit 37d6a6ac3ccc2ec9b60ca2fa468d1cc75759463e[m
+Merge: a9f3048 881694f
+Author: LizzienotLee <125400083+LizzienotLee@users.noreply.github.com>
+Date:   Sun Jun 18 20:07:15 2023 +0900
+
+    Merge pull request #3 from LizzienotLee/main
+    
+    test commit_JS
+
+[33mcommit 881694f2ccb552f6b827de460744d0758a08ff4c[m
+Author: LeeJiSeon <jslee227@naver.com>
+Date:   Sun Jun 18 19:58:57 2023 +0900
+
+    test commit_JS
+
+[33mcommit a9f3048cb9230bd7b9821ef655cb8c64eea17b9f[m
+Merge: 0c08074 7b5cf28
+Author: yeon10 <54517831+yeon10@users.noreply.github.com>
+Date:   Sun Jun 18 19:50:27 2023 +0900
+
+    Merge pull request #2 from yeon10/main
+    
+    0618 update
+
+[33mcommit 7b5cf28f53bac314c537ad961f77d7c1026e8992[m
+Author: Yoon soyeon <so000901@naver.com>
+Date:   Sun Jun 18 19:49:38 2023 +0900
+
+    0618 update
+
+[33mcommit 0c0807402d24eef27245bf960773e50e4c81b969[m
+Author: SuMin <suminkim06@gmail.com>
+Date:   Sun Jun 18 19:48:59 2023 +0900
+
+    test commit_SM
+
+[33mcommit 16a16693886976ba3c36c1a5e051fa11dd929d1c[m
+Author: wooju <wuniverse8897@gmail.com>
+Date:   Sun Jun 18 18:41:19 2023 +0900
+
+    RecognizeSuccessEventHandler 인식된 음성과 스크립트 비교 코드작성. 마이크테스트 자막처리 성공.
+
+[33mcommit 81be45081ed536a784545c3500dffeb0d8fdc7d2[m
+Author: wooju <wuniverse8897@gmail.com>
+Date:   Sun Jun 18 15:45:07 2023 +0900
+
+    Speech-to-Text Asset mic-test 성공, Front Dislay로 쓸 4part 추출 성공'
+
+[33mcommit e0f5a7e161b963c12b0e160c1ca48e25978760b1[m
+Merge: 04c404f 60469f7
+Author: wooju <universe8897@gmail.com>
+Date:   Sun Jun 18 12:00:34 2023 +0900
+
+    Merge branch 'main' of https://github.com/Han1132/Duk-to-Me
+
+[33mcommit 04c404f3176e73c25ccd280541d49cd4882d8987[m
+Author: wooju <universe8897@gmail.com>
+Date:   Sat Jun 17 19:49:47 2023 +0900
+
+    test commit
+
+[33mcommit 60469f7692eb8f4e54cbd4f095fbf41c44d97da4[m
+Merge: c3d7823 86612eb
+Author: dhlee47-l <65275537+dhlee47-l@users.noreply.github.com>
+Date:   Sat Jun 17 19:47:24 2023 +0900
+
+    Merge pull request #1 from dhlee47-l/main
+    
+    test_dhlee.txt added
+
+[33mcommit 86612eb5a3bd0dc938dab09011aee32b99796df1[m
+Author: kimusvita@naver.com <kimusvita@naver.com>
+Date:   Sat Jun 17 19:45:51 2023 +0900
+
+    test01_modified
+
+[33mcommit a41cbe35aa2dcdd7017c0cf16d183b9e8d41693a[m
+Author: kimusvita@naver.com <kimusvita@naver.com>
+Date:   Sat Jun 17 19:38:46 2023 +0900
+
+    test_dhlee.txt
+
+[33mcommit c3d7823326d6d2bfa1ef5ab9d843a9bcb24c26bc[m
+Author: Woo Ju <89486649+Devuniverse573@users.noreply.github.com>
+Date:   Sat Jun 17 19:32:14 2023 +0900
+
+    Update README.md
+
+[33mcommit 568e5562d73c3cf6d11f507fc4c4c7a272298c3d[m
+Author: Woo Ju <89486649+Devuniverse573@users.noreply.github.com>
+Date:   Sat Jun 17 19:18:48 2023 +0900
+
+    Update README.md
+
+[33mcommit 2ad4f6b0b0a1eb4849fbf8091d8d05f90b910f02[m
+Author: SMK <70799489+Han1132@users.noreply.github.com>
+Date:   Tue May 23 12:07:16 2023 +0900
+
+    Initial commit
