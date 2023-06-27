@@ -375,35 +375,186 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
         //     }
         // }
 
+		// private void RecognizeSuccessEventHandler(RecognitionResponse recognitionResponse)
+		// {
+		// 	string transcript = recognitionResponse.results[0].alternatives[0].transcript;
+		// 	string scriptPath = "Script.txt";
+
+		// 	string[] scriptLine = File.ReadAllLines(scriptPath);
+
+		// 	bool matchFound = false;
+
+		// 	if (transcript.Trim().Equals(scriptLine[0].Trim(), StringComparison.OrdinalIgnoreCase))
+		// 	{
+		// 		matchFound = true;
+		// 		Debug.Log("Success!");
+		// 		// Perform actions when a script line matches
+		// 		InsertRecognitionResponseInfo(recognitionResponse);
+		// 	}
+
+		// 	if (!matchFound)
+		// 	{
+		// 		Debug.Log("Try again!");
+		// 		// Perform actions when no script line matches
+		// 		InsertRecognitionResponseInfo(recognitionResponse);
+		// 	}
+		// }
+
+
+		// private void RecognizeSuccessEventHandler(RecognitionResponse recognitionResponse)
+		// {
+		// 	string transcript = recognitionResponse.results[0].alternatives[0].transcript;
+		// 	string scriptPath = "Script.txt";
+
+		// 	string[] scriptLine = File.ReadAllLines(scriptPath);
+
+		// 	bool matchFound = transcript.Trim().Equals(scriptLine[0].Trim(), StringComparison.OrdinalIgnoreCase);
+
+		// 	if (matchFound)
+		// 	{
+		// 		float matchPercentage = 100f;
+		// 		Debug.Log("Success!");
+		// 		// Perform actions when a script line matches
+		// 		InsertRecognitionResponseInfo(recognitionResponse);
+		// 		PrintScore(matchPercentage);
+		// 		Debug.Log($"Match Percentage: {matchPercentage}%");
+		// 	}
+		// 	else
+		// 	{
+		// 		Debug.Log("Try again!");
+		// 		// Perform actions when no script line matches
+		// 		InsertRecognitionResponseInfo(recognitionResponse);
+
+		// 		float matchPercentage = CalculateMatchPercentage(transcript, scriptLine[0]);
+		// 		PrintScore(matchPercentage);
+		// 		Debug.Log($"Match Percentage: {matchPercentage}%");
+		// 	}
+		// }
+
+		// private float CalculateMatchPercentage(string transcript, string scriptLine)
+		// {
+		// 	int matchingChars = 0;
+		// 	int totalChars = scriptLine.Length;
+
+		// 	for (int i = 0; i < totalChars; i++)
+		// 	{
+		// 		if (i < transcript.Length && transcript[i] == scriptLine[i])
+		// 		{
+		// 			matchingChars++;
+		// 		}
+		// 	}
+
+		// 	return (float)matchingChars / totalChars * 100f;
+		// }
+
+		// private void PrintScore(float matchPercentage)
+		// {
+		// 	if (matchPercentage == 100)
+		// 	{
+		// 		Debug.Log("Excellent!");
+		// 	}
+		// 	else if (matchPercentage >= 75)
+		// 	{
+		// 		Debug.Log("Great!");
+		// 	}
+		// 	else if (matchPercentage >= 60)
+		// 	{
+		// 		Debug.Log("Good!");
+		// 	}
+		// 	else if (matchPercentage >= 50)
+		// 	{
+		// 		Debug.Log("Nice job!");
+		// 	}
+		// 	else
+		// 	{
+		// 		Debug.Log("You could use a little improvement!");
+		// 	}
+		// }
+		
 		private void RecognizeSuccessEventHandler(RecognitionResponse recognitionResponse)
 		{
 			string transcript = recognitionResponse.results[0].alternatives[0].transcript;
 			string scriptPath = "Script.txt";
+			int scriptLineNumber = 0; // Specify the line number you want to compare(!!이거 반복가능하게 고쳐야함!!)
 
-		
 			string[] scriptLines = File.ReadAllLines(scriptPath);
+			string scriptLine = scriptLines[scriptLineNumber];
 
-			bool matchFound = false;
+			bool matchFound = transcript.Trim().Equals(scriptLine.Trim(), StringComparison.OrdinalIgnoreCase);
 
-			foreach (string scriptLine in scriptLines)
+			if (matchFound)
 			{
-				if (transcript.Trim().Equals(scriptLine.Trim(), StringComparison.OrdinalIgnoreCase))
-				{
-					matchFound = true;
-					Debug.Log("Success!");
-					// Perform actions when a script line matches
-					InsertRecognitionResponseInfo(recognitionResponse);
-					break; // Exit the loop if a match is found
-				}
+				float matchPercentage = 100f;
+				Debug.Log("Success!");
+				// Perform actions when a script line matches
+				InsertRecognitionResponseInfo(recognitionResponse);
+				PrintScore(matchPercentage);
+				Debug.Log($"Match Percentage: {matchPercentage}%");
 			}
-
-			if (!matchFound)
+			else
 			{
+				float matchPercentage = CalculateMatchPercentage(scriptLine, transcript);
 				Debug.Log("Try again!");
 				// Perform actions when no script line matches
 				InsertRecognitionResponseInfo(recognitionResponse);
+				PrintScore(matchPercentage);
+				Debug.Log($"Match Percentage: {matchPercentage}%");
 			}
 		}
+
+		private float CalculateMatchPercentage(string scriptLine, string transcript)
+		{
+			string[] scriptWords = scriptLine.Trim().Split(' ');
+			string[] transcriptWords = transcript.Trim().Split(' ');
+
+			int matchingWords = 0;
+
+			for (int i = 0; i < scriptWords.Length && i < transcriptWords.Length; i++)
+			{
+				if (scriptWords[i].Equals(transcriptWords[i], StringComparison.OrdinalIgnoreCase))
+				{
+					matchingWords++;
+				}
+			}
+
+			return (float)matchingWords / scriptWords.Length * 100f;
+		}
+
+		private void PrintScore(float matchPercentage)
+		{
+			if (Math.Abs(matchPercentage - 100f) < 0.0001f)
+			{
+				Debug.Log("Excellent!");
+			}
+			else if (matchPercentage >= 90)
+			{
+				Debug.Log("Great job!");
+			}
+			else if (matchPercentage >= 80)
+			{
+				Debug.Log("Well done!");
+			}
+			else if (matchPercentage >= 70)
+			{
+				Debug.Log("Good effort!");
+			}
+			else if (matchPercentage >= 60)
+			{
+				Debug.Log("Nice try!");
+			}
+			else
+			{
+				Debug.Log("Keep practicing!");
+			}
+		}
+
+
+
+
+
+
+
+
 
 
 
