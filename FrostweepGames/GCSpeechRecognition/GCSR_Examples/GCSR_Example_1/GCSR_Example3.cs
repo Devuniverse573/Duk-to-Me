@@ -3,15 +3,11 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
-using System.Collections.Generic;
 
 namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 {
-	public class GCSR_Example : MonoBehaviour
+	public class GCSR_Example3 : MonoBehaviour
 	{
-		private Text _debugLogText;
-		private List<string> debugLogs = new List<string>();
-
 		public int scoreValue = 0; // ScoreManager로 보낼 점수 정보담는 변수
 
 		private GCSpeechRecognition _speechRecognition;
@@ -27,10 +23,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 
 		private Image _speechRecognitionState;
 
-		private Text _resultText; //음성인식 후 문자로 나오는 것
-
-		public Text t_PrintScore, t_PaFa, t_match; //프론트 작성 
-
+		private Text _resultText;
 
 		private Toggle _voiceDetectionToggle,
 					   _recognizeDirectlyToggle,
@@ -297,7 +290,10 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
             {
 				content = raw.ToBase64(channels: clip.channels)
 			};
-
+			//recognitionRequest.audio = new RecognitionAudioUri() // for Google Cloud Storage object
+			//{
+			//	uri = "gs://bucketName/object_name"
+			//};
 			recognitionRequest.config = config;
 
 			if (_longRunningRecognizeToggle.isOn)
@@ -359,7 +355,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 		private void RecognizeSuccessEventHandler(RecognitionResponse recognitionResponse)
 		{
 			string transcript = recognitionResponse.results[0].alternatives[0].transcript;
-			string scriptPath = "Script0.txt";
+			string scriptPath = "Script3.txt";
 			int scriptLineNumber = 0; // Specify the line number you want to compare(!!이거 반복가능하게 고쳐야함!!)
 
 			string[] scriptLines = File.ReadAllLines(scriptPath);
@@ -372,22 +368,22 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 				float matchPercentage = 100f;
 				scoreValue = 100;
 				ScoreDelivery.SetSceneScore(scoreValue); // ScoreDelivery로 보내기
-				t_PaFa.text="Success!";
+				Debug.Log("Success!");
 				// Perform actions when a script line matches
 				InsertRecognitionResponseInfo(recognitionResponse);
 				PrintScore(matchPercentage);
-				t_match.text="Match Percentage: "+(matchPercentage) +"%";
+				Debug.Log($"Match Percentage: {matchPercentage}%");
 			}
 			else
 			{
 				float matchPercentage = CalculateMatchPercentage(scriptLine, transcript);
 				scoreValue = (int)matchPercentage;
 				ScoreDelivery.SetSceneScore(scoreValue); // ScoreDelivery로 보내기
-				t_PaFa.text="Try again!";
+				Debug.Log("Try again!");
 				// Perform actions when no script line matches
 				InsertRecognitionResponseInfo(recognitionResponse);
 				PrintScore(matchPercentage);
-				t_match.text="Match Percentage: "+(matchPercentage) +"%";
+				Debug.Log($"Match Percentage: {matchPercentage}%");
 			}
 		}
 
@@ -410,27 +406,26 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 		}
 
 		private void PrintScore(float matchPercentage)
-		{	
+		{
 			if (Math.Abs(matchPercentage - 100f) < 0.0001f)
 			{
-				t_PrintScore.text="Excellent!";
+				Debug.Log("Excellent!");
 			}
 			else if (matchPercentage >= 80)
 			{
-				t_PrintScore.text="Excellent!";
+				Debug.Log("Excellent!");
 			}
 			else if (matchPercentage >= 70)
 			{
-				t_PrintScore.text="Great job!";
+				Debug.Log("Great job!");
 			}
 			else if (matchPercentage >= 50)
 			{
-				t_PrintScore.text="Well done!";
+				Debug.Log("Well done!");
 			}
 			else
 			{
-				t_PrintScore.text="Keep practicing!";
-			
+				Debug.Log("Keep practicing!");
 			}
 		}
 
@@ -450,15 +445,24 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 				{
 					_resultText.text = "Long Running Recognize Success.";
 					_resultText.text += "\n" + operation.response.results[0].alternatives[0].transcript;
+
+					// string other = "\nDetected alternatives:\n";
+					//string other = "\n\n";
+
 					
 					foreach (var result in operation.response.results)
 					{
 						foreach (var alternative in result.alternatives)
 						{
 							if (operation.response.results[0].alternatives[0] != alternative)
-							{	}
+							{
+								//other += alternative.transcript + ", ";
+							}
 						}
 					}
+					
+
+					//_resultText.text += other;
 				}
 			}
         }
@@ -477,20 +481,30 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 
 			if (words != null)
 			{
+				//string times = string.Empty;
 
 				foreach (var item in recognitionResponse.results[0].alternatives[0].words)
-				{ }
+				{
+					//times += "<color=green>" + item.word + "</color> -  start: " + item.startTime + "; end: " + item.endTime + "\n";
+				}
 
+				//_resultText.text += "\n" + times;
 			}
+
+			//string other = "\nDetected alternatives: ";
 
 			foreach (var result in recognitionResponse.results)
 			{
 				foreach (var alternative in result.alternatives)
 				{
 					if (recognitionResponse.results[0].alternatives[0] != alternative)
-					{	}
+					{
+						//other += alternative.transcript + ", ";
+					}
 				}
-			}	
+			}
+
+			//_resultText.text += other;
 		}
     }
 }
