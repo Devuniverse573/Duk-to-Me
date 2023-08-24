@@ -9,7 +9,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 	public class GCSR_Example6 : MonoBehaviour
 	{
 		public int scoreValue = 0;	
-
+		
 		private GCSpeechRecognition _speechRecognition;
 
 		private Button _startRecordButton,
@@ -352,10 +352,11 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 			}		
 		}
 		
+// 마지막 씬이라서 음성인식 성공 이벤트 실행안됨
 		private void RecognizeSuccessEventHandler(RecognitionResponse recognitionResponse)
 		{
 			string transcript = recognitionResponse.results[0].alternatives[0].transcript;
-			string scriptPath = "Script5.txt";
+			string scriptPath = "GameScripts\\Script5.txt";
 			int scriptLineNumber = 0; // Specify the line number you want to compare(!!이거 반복가능하게 고쳐야함!!)
 
 			string[] scriptLines = File.ReadAllLines(scriptPath);
@@ -369,10 +370,12 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 				scoreValue = 100;
 				ScoreDelivery.SetSceneScore(scoreValue); // ScoreDelivery로 보내기
 				Debug.Log("Success!");
+				//t_PaFa.text="Success!" ;
 				// Perform actions when a script line matches
 				InsertRecognitionResponseInfo(recognitionResponse);
 				PrintScore(matchPercentage);
 				Debug.Log($"Match Percentage: {matchPercentage}%");
+				//t_match.text="Match Percentage: {matchPercentage}%";
 			}
 			else
 			{
@@ -380,10 +383,12 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 				scoreValue = (int)matchPercentage;
 				ScoreDelivery.SetSceneScore(scoreValue); // ScoreDelivery로 보내기
 				Debug.Log("Try again!");
+				//t_PaFa.text ="Try again!";
 				// Perform actions when no script line matches
 				InsertRecognitionResponseInfo(recognitionResponse);
 				PrintScore(matchPercentage);
 				Debug.Log($"Match Percentage: {matchPercentage}%");
+				//t_match.text="Match Percentage: {matchPercentage}%";
 			}
 		}
 
@@ -410,22 +415,27 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 			if (Math.Abs(matchPercentage - 100f) < 0.0001f)
 			{
 				Debug.Log("Excellent!");
+				//t_PrintScore.text="Excellent";
 			}
 			else if (matchPercentage >= 80)
 			{
 				Debug.Log("Excellent!");
+				//t_PrintScore.text="Excellent";
 			}
 			else if (matchPercentage >= 70)
 			{
 				Debug.Log("Great job!");
+				//t_PrintScore.text="Great job!";
 			}
 			else if (matchPercentage >= 60)
 			{
 				Debug.Log("Well done!");
+				//t_PrintScore.text="Well done!";
 			}
 			else
 			{
 				Debug.Log("Keep practicing!");
+				//t_PrintScore.text="Keep practicing!";
 			}
 		}
 

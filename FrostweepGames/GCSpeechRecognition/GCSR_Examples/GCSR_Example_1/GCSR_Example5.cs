@@ -355,7 +355,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 		private void RecognizeSuccessEventHandler(RecognitionResponse recognitionResponse)
 		{
 			string transcript = recognitionResponse.results[0].alternatives[0].transcript;
-			string scriptPath = "Script5.txt";
+			string scriptPath = "GameScripts\\Script1-10.txt";
 			int scriptLineNumber = 0; // Specify the line number you want to compare(!!이거 반복가능하게 고쳐야함!!)
 
 			string[] scriptLines = File.ReadAllLines(scriptPath);
