@@ -6,14 +6,14 @@ using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
 
-public class SelToMy : MonoBehaviour
+// 마이페이지에서 닉네임, 이전게임 점수 데이터 불러오는 코드
+public class nick_mypage : MonoBehaviour
 {
-    public TMPro.TextMeshProUGUI t_name;
+    public TMPro.TextMeshProUGUI t_name, t_score1;
 
-    public void SceneChange()
+    public void Start()
     {
-        SceneManager.LoadScene("MyPage");
-
+        
         // Fetch and display PlayFab data when transitioning scenes
         FetchDataFromPlayFab();
     }
@@ -32,7 +32,7 @@ public class SelToMy : MonoBehaviour
         // Fetch and display user's display name
         string displayName = result.AccountInfo.TitleInfo.DisplayName;
         //Debug.Log("Fetched Display Name: " + displayName);
-        t_name.text = "displayName";
+        t_name.text = displayName;
 
         // Fetch and display user's score
         FetchScoreFromPlayFab();
@@ -60,7 +60,8 @@ public class SelToMy : MonoBehaviour
         {
             if (int.TryParse(scoreValue.Value, out var parsedScore))
             {
-                Debug.Log("Fetched Score: " + parsedScore);
+               // Debug.Log("Fetched Score: " + parsedScore);
+                t_score1.text = parsedScore.ToString();
             }
             else
             {
@@ -78,3 +79,4 @@ public class SelToMy : MonoBehaviour
         Debug.LogError("Failed to fetch PlayFab data: " + error.ErrorMessage);
     }
 }
+

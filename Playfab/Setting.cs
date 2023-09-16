@@ -6,6 +6,8 @@ using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
 
+// 개인정보 수정페이지=SETTINGS 페이지에서 닉네임 데이터 수정처리하는 코드(미완)
+// INPUTFIELD에 현재 닉네임 정보가 떠서 수정할 수 있도록
 public class Setting : MonoBehaviour
 {
     // Start is called before the first frame update

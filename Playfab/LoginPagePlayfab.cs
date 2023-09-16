@@ -8,6 +8,8 @@ using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
+//로그인부터 회원가입, 비밀번호찾기까지 데이터처리 코드
 public class LoginPagePlayfab : MonoBehaviour
 {
     [Header("Login")]
