@@ -1,0 +1,17 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class InputFieldManager : MonoBehaviour
+{
+    private void OnDisable()
+    {
+        // 이 스크립트가 연결된 게임 오브젝트의 자식 오브젝트를 모두 검색
+        InputField[] inputFields = GetComponentsInChildren<InputField>(true);
+
+        // 모든 InputField 초기화
+        foreach (InputField inputField in inputFields)
+        {
+            inputField.text = "";
+        }
+    }
+}
