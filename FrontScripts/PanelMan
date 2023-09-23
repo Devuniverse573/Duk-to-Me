@@ -1,18 +1,37 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
-public class PanelScript : MonoBehaviour
+public class PanelManager : MonoBehaviour
 {
-    // 패널에 있는 InputField를 저장할 배열
-    public InputField[] inputFields;
+    // 패널들을 저장할 배열
+    public GameObject[] panels;
 
-    // 이 함수는 패널이 활성화될 때 호출될 수 있도록 구현해야 합니다.
-    public void OnPanelActivated()
+    // TextMeshPro로 변경된 InputField
+    public TMP_InputField[] tmpInputFields;
+
+    // 패널을 활성화하고 초기화하는 함수
+    public void ActivatePanel(int panelIndex)
     {
-        // InputField를 초기화
-        foreach (InputField inputField in inputFields)
+        // 현재 활성화된 패널을 비활성화
+        foreach (GameObject panel in panels)
         {
-            inputField.text = "";
+            panel.SetActive(false);
+        }
+
+        // 선택한 패널을 활성화
+        panels[panelIndex].SetActive(true);
+
+        // 선택한 패널의 초기화 스크립트 호출
+        PanelScript panelScript = panels[panelIndex].GetComponent<PanelScript>();
+        if (panelScript != null)
+        {
+            panelScript.OnPanelActivated();
+        }
+
+        // TextMeshPro InputField 초기화
+        foreach (TMP_InputField tmpInputField in tmpInputFields)
+        {
+            tmpInputField.text = "";
         }
     }
 }
