@@ -1,0 +1,18 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class PanelScript : MonoBehaviour
+{
+    // 패널에 있는 InputField를 저장할 배열
+    public InputField[] inputFields;
+
+    // 이 함수는 패널이 활성화될 때 호출될 수 있도록 구현해야 합니다.
+    public void OnPanelActivated()
+    {
+        // InputField를 초기화
+        foreach (InputField inputField in inputFields)
+        {
+            inputField.text = "";
+        }
+    }
+}
