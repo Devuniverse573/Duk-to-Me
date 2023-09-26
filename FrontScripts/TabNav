@@ -6,6 +6,10 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
+// 1. 각 InputField를 선택하고 Inspector 패널에서 "Navigation"을 "None"으로 설정
+// 2. TabNav 스크립트를 Unity 프로젝트에 추가하고, InputField 배열에 원하는 InputField 요소들을 할당
+
+
 public class TabNav : MonoBehaviour
 {
     public Selectable[] inputFields; // InputField들을 저장할 배열
