@@ -1,0 +1,54 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+
+public class PanelManager : MonoBehaviour
+{
+    public GameObject[] panels; // 패널 배열
+    private int currentPanelIndex = 0; // 현재 활성화된 패널의 인덱스
+    private TMP_InputField[] inputFields; // 현재 패널의 TextMeshProUGUI 배열
+
+    private void Start()
+    {
+        ShowPanel(currentPanelIndex); // 시작 시 첫 번째 패널 활성화
+    }
+
+    public void ShowPanel(int panelIndex)
+    {
+        // 현재 활성화된 패널을 비활성화
+        panels[currentPanelIndex].SetActive(false);
+
+        // 새로운 패널 활성화
+        panels[panelIndex].SetActive(true);
+
+        // 현재 패널 인덱스 업데이트
+        currentPanelIndex = panelIndex;
+
+        // 현재 패널의 TextMeshProUGUI 초기화
+        inputFields = panels[currentPanelIndex].GetComponentsInChildren<TMP_InputField>(true);
+        ResetInputFields();
+    }
+
+    public void NextPanel()
+    {
+        // 다음 패널로 이동 (마지막 패널이면 첫 번째로 이동)
+        ShowPanel((currentPanelIndex + 1) % panels.Length);
+    }
+
+    public void PreviousPanel()
+    {
+        // 이전 패널로 이동 (첫 번째 패널이면 마지막으로 이동)
+        ShowPanel((currentPanelIndex - 1 + panels.Length) % panels.Length);
+    }
+
+    public void ResetInputFields()
+    {
+        foreach (TMP_InputField inputField in inputFields)
+        {
+            inputField.text = "";
+        }
+    }
+}
