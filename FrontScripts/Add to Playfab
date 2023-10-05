@@ -1,0 +1,68 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+using PlayFab;
+using PlayFab.ClientModels;
+using System;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class LoginPagePlayfab : MonoBehaviour
+{
+    // ... (이전 코드)
+
+    private void Start()
+    {
+        // ...
+    }
+
+    private void Update()
+    {
+        // ...
+    }
+
+    #region Button Functions
+    // ... (이전 함수)
+
+    public void OpenLoginPage()
+    {
+        LoginPage.SetActive(true);
+        RegisterPage.SetActive(false);
+        RecoveryPage.SetActive(false);
+
+        // 추가된 부분: 패널 간 이동 시 InputField 초기화
+        ResetInputFields();
+    }
+
+    public void OpenRegisterPage()
+    {
+        LoginPage.SetActive(false);
+        RegisterPage.SetActive(true);
+        RecoveryPage.SetActive(false);
+
+        // 추가된 부분: 패널 간 이동 시 InputField 초기화
+        ResetInputFields();
+    }
+
+    public void OpenRecoveryPage()
+    {
+        LoginPage.SetActive(false);
+        RegisterPage.SetActive(false);
+        RecoveryPage.SetActive(true);
+
+        // 추가된 부분: 패널 간 이동 시 InputField 초기화
+        ResetInputFields();
+    }
+
+    private void ResetInputFields()
+    {
+        // 현재 활성화된 패널의 TextMeshProUGUI 초기화
+        TMP_InputField[] inputFields = panels[currentPanelIndex].GetComponentsInChildren<TMP_InputField>(true);
+        foreach (TMP_InputField inputField in inputFields)
+        {
+            inputField.text = "";
+        }
+    }
+    #endregion
+}
