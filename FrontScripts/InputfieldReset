@@ -1,0 +1,18 @@
+using UnityEngine;
+using TMPro;
+
+public class InputFieldResetter : MonoBehaviour
+{
+    private TMP_InputField[] inputFields;
+
+    public void ResetInputFields(GameObject panel)
+    {
+        // 현재 패널의 TextMeshProUGUI 초기화
+        inputFields = panel.GetComponentsInChildren<TMP_InputField>(true);
+
+        foreach (TMP_InputField inputField in inputFields)
+        {
+            inputField.text = "";
+        }
+    }
+}
