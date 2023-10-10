@@ -1,0 +1,139 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+using PlayFab;
+using PlayFab.ClientModels;
+using System;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class LoginPagePlayfab : MonoBehaviour
+{
+    [SerializeField] private TextMeshProUGUI MessageText;
+
+    [Header("Login")]
+    [SerializeField] private TMP_InputField EmailLoginInput;
+    [SerializeField] private TMP_InputField PasswordLoginInput;
+    [SerializeField] private GameObject LoginPage;
+
+    [Header("Register")]
+    [SerializeField] private TMP_InputField UsernameRegisterInput;
+    [SerializeField] private TMP_InputField EmailRegisterInput;
+    [SerializeField] private TMP_InputField PasswordRegisterInput;
+    [SerializeField] private GameObject RegisterPage;
+
+    [Header("Recovery")]
+    [SerializeField] private TMP_InputField EmailRecoveryInput;
+    [SerializeField] private GameObject RecoveryPage;
+
+    private TMP_InputField[] inputFields; // 모든 TMP_InputField 배열
+
+    private void Start()
+    {
+        // 초기화할 모든 TMP_InputField를 배열로 만듭니다.
+        inputFields = new TMP_InputField[] { EmailLoginInput, PasswordLoginInput, UsernameRegisterInput, EmailRegisterInput, PasswordRegisterInput, EmailRecoveryInput };
+    }
+
+    public void RegisterUser()
+    {
+        var request = new RegisterPlayFabUserRequest
+        {
+            DisplayName = UsernameRegisterInput.text,
+            Email = EmailRegisterInput.text,
+            Password = PasswordRegisterInput.text,
+            RequireBothUsernameAndEmail = false
+        };
+
+        PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnError);
+    }
+
+    public void Login()
+    {
+        var request = new LoginWithEmailAddressRequest
+        {
+            Email = EmailLoginInput.text,
+            Password = PasswordLoginInput.text,
+        };
+        PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnError);
+    }
+
+    private void OnLoginSuccess(LoginResult result)
+    {
+        // 로그인 성공 시 실행할 코드를 작성합니다.
+        SceneManager.LoadScene("Selection");
+        InitializeInputFields();
+    }
+
+    public void RecoverUser()
+    {
+        var request = new SendAccountRecoveryEmailRequest
+        {
+            Email = EmailRecoveryInput.text,
+            TitleId = "BEF62",
+        };
+
+        PlayFabClientAPI.SendAccountRecoveryEmail(request, OnRecoverySuccess, OnErrorRecovery);
+    }
+
+    private void OnRecoverySuccess(SendAccountRecoveryEmailResult obj)
+    {
+        OpenLoginPage();
+        MessageText.text = "Recovery Mail Sent";
+        InitializeInputFields();
+    }
+
+    private void OnErrorRecovery(PlayFabError result)
+    {
+        MessageText.text = "No Email Found";
+    }
+
+    private void OnError(PlayFabError Error)
+    {
+        string errorMessage = Error.ErrorMessage;
+        MessageText.text = errorMessage;
+    }
+
+    private void OnRegisterSuccess(RegisterPlayFabUserResult Result)
+    {
+        OpenLoginPage();
+        MessageText.text = "New Account Is Created";
+        InitializeInputFields();
+    }
+
+    public void OpenLoginPage()
+    {
+        MessageText.text = "";
+        LoginPage.SetActive(true);
+        RegisterPage.SetActive(false);
+        RecoveryPage.SetActive(false);
+        InitializeInputFields(); // 현재 열린 패널의 입력 필드 초기화
+    }
+
+    public void OpenRegisterPage()
+    {
+        MessageText.text = "";
+        LoginPage.SetActive(false);
+        RegisterPage.SetActive(true);
+        RecoveryPage.SetActive(false);
+        InitializeInputFields(); // 현재 열린 패널의 입력 필드 초기화
+    }
+
+    public void OpenRecoveryPage()
+    {
+        MessageText.text = "";
+        LoginPage.SetActive(false);
+        RegisterPage.SetActive(false);
+        RecoveryPage.SetActive(true);
+        InitializeInputFields(); // 현재 열린 패널의 입력 필드 초기화
+    }
+
+    // 모든 TMP_InputField 초기화
+    private void InitializeInputFields()
+    {
+        foreach (TMP_InputField inputField in inputFields)
+        {
+            inputField.text = "";
+        }
+    }
+}
