@@ -1,0 +1,63 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class Blicking_tmp : MonoBehaviour
+{
+    public float blinkInterval = 1f; // Time interval for blinking in seconds
+    public float fadeDuration = 0.5f; // Duration of the fade effect in seconds
+    private bool isBlinking = false;
+    private float timer = 0f;
+    private TextMeshProUGUI tmpElement; // Reference to the TMP Text element
+    private Coroutine fadeCoroutine;
+
+    void Start()
+    {
+        tmpElement = GetComponent<TextMeshProUGUI>(); // Assuming the script is attached to a TMP Text element
+        if (tmpElement == null)
+        {
+            Debug.LogError("BlinkingEffect script requires a TextMeshProUGUI component on the same GameObject.");
+            enabled = false; // Disable the script if the required component is missing
+            return;
+        }
+
+        tmpElement.canvasRenderer.SetAlpha(0f); // Start with the text element fully transparent
+    }
+
+    void Update()
+    {
+        timer += Time.deltaTime;
+
+        if (timer >= blinkInterval)
+        {
+            isBlinking = !isBlinking;
+            timer = 0f;
+
+            // Start a fade coroutine to smoothly fade the TMP Text element in and out
+            if (fadeCoroutine != null)
+            {
+                StopCoroutine(fadeCoroutine);
+            }
+            fadeCoroutine = StartCoroutine(FadeText(isBlinking));
+        }
+    }
+
+    IEnumerator FadeText(bool fadeIn)
+    {
+        float startAlpha = fadeIn ? 0f : 1f;
+        float endAlpha = fadeIn ? 1f : 0f;
+        float elapsed = 0f;
+
+        while (elapsed < fadeDuration)
+        {
+            float alpha = Mathf.Lerp(startAlpha, endAlpha, elapsed / fadeDuration);
+            tmpElement.canvasRenderer.SetAlpha(alpha);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        tmpElement.canvasRenderer.SetAlpha(endAlpha);
+    }
+}
