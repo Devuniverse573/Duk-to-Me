@@ -77,6 +77,8 @@ Below is the overall architecture diagram illustrating the main functional compo
 
 > Below are key screenshots showcasing the main features of *Duk to Me*.
 
+<br/>
+
 ### 🗺️ Metaverse Exploration
 <p align="center">
   <img src="./images/metaverse-map.png" alt="Metaverse Map" width="600"/>
@@ -97,13 +99,13 @@ Below is the overall architecture diagram illustrating the main functional compo
   <img src="./images/feedback-result.png" alt="Feedback Screen" width="600"/>
 </p>
 
----
+<br/>
 
 ### 📽️ Final Demo Video
 
 > Watch a full demonstration of all core features — from character selection and voice interaction to real-time feedback — in action:
 
-🎥 [▶️ Watch the Final Demo on YouTube](https://www.youtube.com/watch?v=your_video_id_here)
+🎥 [▶️ Watch the Final Demo on YouTube](https://youtu.be/7gwBMMFnIlQ)
 
 <br/>
 
