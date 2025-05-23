@@ -5,7 +5,7 @@
 <br/>
 
 <p align="center">
-  <img src="./images/logo-duktome.png" alt="Duk to Me Project Logo" width="300"/>
+  <img src="./images/logo-duktome.png" alt="Duk to Me Project Logo" width="400"/>
 </p>
 
 <br/>
@@ -52,7 +52,9 @@ After each conversation, receive immediate feedback on pronunciation and sentenc
 ### 📐 System Architecture
 Below is the overall architecture diagram illustrating the main functional components and their interactions within the Duk to Me platform.
 
-![Architecture Diagram](./images/architecture.png)
+<p align="center">
+  <img src="./images/architecture.png" alt="Architecture Diagram" width="750"/>
+</p>
 
 <br/>
 
@@ -76,16 +78,32 @@ Below is the overall architecture diagram illustrating the main functional compo
 > Below are key screenshots showcasing the main features of *Duk to Me*.
 
 ### 🗺️ Metaverse Exploration
-![Metaverse Map](./images/metaverse-map.png)
+<p align="center">
+  <img src="./images/metaverse-map.png" alt="Metaverse Map" width="600"/>
+</p>
 
 ### 🧍 Character Selection
-![Character Selection](./images/character-select.png)
+<p align="center">
+  <img src="./images/character-select.png" alt="Character Selection" width="600"/>
+</p>
 
 ### 🎤 Real-Time AI Conversation
-![AI Conversation](./images/ai-convo.png)
+<p align="center">
+  <img src="./images/ai-convo.png" alt="AI Conversation" width="600"/>
+</p>
 
 ### 🧠 Feedback & Scoring System
-![Feedback Screen](./images/feedback-result.png)
+<p align="center">
+  <img src="./images/feedback-result.png" alt="Feedback Screen" width="600"/>
+</p>
+
+---
+
+### 📽️ Final Demo Video
+
+> Watch a full demonstration of all core features — from character selection and voice interaction to real-time feedback — in action:
+
+🎥 [▶️ Watch the Final Demo on YouTube](https://www.youtube.com/watch?v=your_video_id_here)
 
 <br/>
 
