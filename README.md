@@ -73,7 +73,7 @@ Below is the overall architecture diagram illustrating the main functional compo
 <br/>
 
 
-##  5. Screenshots or Demo
+##  5. Screenshots and Demo
 
 > Below are key screenshots showcasing the main features of *Duk to Me*.
 
