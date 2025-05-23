@@ -2,11 +2,12 @@
 
 > This project was originally developed as a team capstone project for the 2023 Evewa ICT Contest, and curated by Naomi Woo as an individual portfolio.
 
+<br/>
+
 <p align="center">
   <img src="./images/logo-duktome.png" alt="Duk to Me Project Logo" width="300"/>
 </p>
 
-<br/>
 <br/>
 
 ##  1. Project Overview
