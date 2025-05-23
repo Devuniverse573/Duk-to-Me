@@ -8,6 +8,7 @@
   <img src="./images/logo-duktome.png" alt="Duk to Me Project Logo" width="400"/>
 </p>
 
+
 <br/>
 
 ##  1. Project Overview
@@ -53,7 +54,7 @@ After each conversation, receive immediate feedback on pronunciation and sentenc
 Below is the overall architecture diagram illustrating the main functional components and their interactions within the Duk to Me platform.
 
 <p align="center">
-  <img src="./images/architecture.png" alt="Architecture Diagram" width="750"/>
+  <img src="./images/architecture.png" alt="Architecture Diagram" width="700"/>
 </p>
 
 <br/>
@@ -105,7 +106,7 @@ Below is the overall architecture diagram illustrating the main functional compo
 
 > Watch a full demonstration of all core features — from character selection and voice interaction to real-time feedback — in action:
 
-🎥 [▶️ Watch the Final Demo on YouTube](https://youtu.be/7gwBMMFnIlQ)
+🎥 [▶️ Click here to watch the final demo on YouTube](https://youtu.be/7gwBMMFnIlQ)
 
 <br/>
 
