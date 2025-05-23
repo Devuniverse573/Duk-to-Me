@@ -106,7 +106,7 @@ Below is the overall architecture diagram illustrating the main functional compo
 
 > Watch a full demonstration of all core features — from character selection and voice interaction to real-time feedback — in action:
 
-🎥 [▶️ Click here to watch the final demo on YouTube](https://youtu.be/7gwBMMFnIlQ)
+[▶️ Click here to watch the final demo on YouTube](https://youtu.be/7gwBMMFnIlQ)
 
 <br/>
 
