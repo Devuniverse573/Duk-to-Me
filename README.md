@@ -2,6 +2,10 @@
 
 > This project was originally developed as a team capstone project for the 2023 Evewa ICT Contest, and curated by Naomi Woo as an individual portfolio.
 
+<p align="center">
+  <img src="./images/logo-duktome.png" alt="Duk to Me Project Logo" width="300"/>
+</p>
+
 <br/>
 <br/>
 
@@ -10,6 +14,7 @@
 
 
 <br/>
+
 
 ##  2. Motivation & Goals
 Traditional English education in Korea — and many other countries — remains heavily focused on grammar and standardized testing. While this may help with reading or test-taking, it often fails to improve actual speaking ability, leaving learners underprepared for real-world communication.
@@ -20,6 +25,7 @@ By leveraging cutting-edge technologies like AI voice recognition and metaverse 
 
 
 <br/>
+
 
 ##  3. Key Features
 🗺️ **Explore a Metaverse Airport Map**  
@@ -39,6 +45,7 @@ After each conversation, receive immediate feedback on pronunciation and sentenc
 
 <br/>
 
+
 ##  4. Architecture & Tech Stack
 
 ### 📐 System Architecture
@@ -50,36 +57,37 @@ Below is the overall architecture diagram illustrating the main functional compo
 
 ### 🛠️ Tech Stack
 
-**Frontend / Game Engine:** Unity 2022, Blender 3.6  
-**Backend / Platform:** PlayFab  
-**AI / Voice Processing:** Google Speech API, OpenAI Whisper, AWS Polly  
-**Languages:** C#, Python  
-**Development Tools:** VS Code, PyCharm, Git  
-**Collaboration:** Trello, Discord
 
+| Category                     | Tools & Technologies                               |
+|------------------------------|-----------------------------------------------------|
+| 🎮 **Frontend / Game Engine** | Unity 2022, Blender 3.6                             |
+| 🗄️ **Backend / Platform**      | PlayFab, Photon Server                              |
+| 🧠 **AI / Voice Processing**  | Google Speech API, OpenAI Whisper, AWS Polly       |
+| 💻 **Languages**              | C#, Python                                          |
+| 🧰 **Development Tools**      | VS Code, PyCharm, Git                               |
+| 🤝 **Collaboration**          | Trello, Discord                                     |
 
 <br/>
+
 
 ##  5. Screenshots or Demo
-*(Insert screenshots below using markdown)*
-```md
-![](./images/character_selection.png)
-![](./images/conversation_mode.png)
-![](./images/score_feedback.png)
-```
+
+> Below are key screenshots showcasing the main features of *Duk to Me*.
+
+### 🗺️ Metaverse Exploration
+![Metaverse Map](./images/metaverse-map.png)
+
+### 🧍 Character Selection
+![Character Selection](./images/character-select.png)
+
+### 🎤 Real-Time AI Conversation
+![AI Conversation](./images/ai-convo.png)
+
+### 🧠 Feedback & Scoring System
+![Feedback Screen](./images/feedback-result.png)
 
 <br/>
 
-##  6. Menu Structure / Navigation
-```md
-- 🛫 Airport Map
-  - 🧍 Character Selection
-  - 📖 Story Mode
-  - 🎤 Free Conversation Mode
-  - 🧭 My Page (Progress, Settings)
-```
-
-<br/>
 
 ## 👤 Author & Contact
 **Team:** IDEAL (Evewa ICT Mentoring Project Team)  
