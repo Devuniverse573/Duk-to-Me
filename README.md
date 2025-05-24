@@ -115,4 +115,4 @@ Below is the overall architecture diagram illustrating the main functional compo
 **Team:** IDEAL (Evewa ICT Mentoring Project Team)  
 **Project Contributor & Documentation Author:** Naomi Woo    
 **GitHub:** [github.com/naomi-woo/Duk-to-Me](https://github.com/naomi-woo/Duk-to-Me)  
-**Contact:** Feel free to reach out via [LinkedIn](https://www.linkedin.com/in/ju-woo-b77b91201/)
+**Contact:** Feel free to reach out via [LinkedIn](https://www.linkedin.com/in/naomi-woo-profile/)
